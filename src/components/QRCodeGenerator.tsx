@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import { QRCode } from 'qrcode.react';
+import QRCode from 'qrcode.react';
 import { useDropzone } from 'react-dropzone';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
