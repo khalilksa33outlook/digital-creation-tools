@@ -2,8 +2,10 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Slider } from '@/components/ui/slider';
 import { Button } from '@/components/ui/button';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import LogoUploader from './LogoUploader';
 import { toast } from 'sonner';
+import { Link } from 'react-router-dom';
 
 interface QRCodeFormProps {
   text: string;
@@ -50,8 +52,53 @@ const QRCodeForm = ({
     }
   };
 
+  const resetForm = () => {
+    setText('https://lovable.dev');
+    setSize(256);
+    setFgColor('#8B5CF6');
+    setBgColor('#FFFFFF');
+    setLogo(null);
+    setRemoveLogoBackground(false);
+    toast.success('Form reset successfully!');
+  };
+
+  const handleInputType = (value: string) => {
+    switch (value) {
+      case 'whatsapp':
+        setText('https://wa.me/');
+        break;
+      case 'tel':
+        setText('tel:');
+        break;
+      case 'email':
+        setText('mailto:');
+        break;
+      case 'sms':
+        setText('sms:');
+        break;
+      default:
+        setText('https://');
+    }
+  };
+
   return (
     <div className="glass-panel p-6 space-y-6">
+      <div className="space-y-2">
+        <Label>Input Type</Label>
+        <Select onValueChange={handleInputType} defaultValue="url">
+          <SelectTrigger>
+            <SelectValue placeholder="Select input type" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="url">URL</SelectItem>
+            <SelectItem value="whatsapp">WhatsApp</SelectItem>
+            <SelectItem value="tel">Phone</SelectItem>
+            <SelectItem value="email">Email</SelectItem>
+            <SelectItem value="sms">SMS</SelectItem>
+          </SelectContent>
+        </Select>
+      </div>
+
       <div className="space-y-2">
         <Label>Content</Label>
         <Input
@@ -104,9 +151,22 @@ const QRCodeForm = ({
         setIsProcessing={setIsProcessing}
       />
 
-      <Button onClick={downloadQR} className="w-full" disabled={isProcessing}>
-        Download QR Code
-      </Button>
+      <div className="flex gap-4">
+        <Button onClick={downloadQR} className="flex-1" disabled={isProcessing}>
+          Download QR Code
+        </Button>
+        <Button onClick={resetForm} variant="outline" className="flex-1" disabled={isProcessing}>
+          Reset
+        </Button>
+      </div>
+
+      <div className="pt-4 border-t">
+        <Link to="/whatsapp">
+          <Button variant="secondary" className="w-full">
+            Create WhatsApp Link
+          </Button>
+        </Link>
+      </div>
     </div>
   );
 };
