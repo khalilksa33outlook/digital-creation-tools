@@ -5,7 +5,9 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Slider } from '@/components/ui/slider';
 import { Label } from '@/components/ui/label';
+import { Switch } from '@/components/ui/switch';
 import { toast } from 'sonner';
+import { removeBackground, loadImage } from '@/utils/backgroundRemoval';
 
 const QRCodeGenerator = () => {
   const [text, setText] = useState('https://lovable.dev');
@@ -13,22 +15,42 @@ const QRCodeGenerator = () => {
   const [fgColor, setFgColor] = useState('#8B5CF6');
   const [bgColor, setBgColor] = useState('#FFFFFF');
   const [logo, setLogo] = useState<string | null>(null);
+  const [removeLogoBackground, setRemoveLogoBackground] = useState(false);
+  const [isProcessing, setIsProcessing] = useState(false);
 
-  const onDrop = useCallback((acceptedFiles: File[]) => {
+  const onDrop = useCallback(async (acceptedFiles: File[]) => {
     const file = acceptedFiles[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        setLogo(e.target?.result as string);
-      };
-      reader.readAsDataURL(file);
+      try {
+        setIsProcessing(true);
+        const img = await loadImage(file);
+        
+        if (removeLogoBackground) {
+          const processedBlob = await removeBackground(img);
+          const processedImg = await loadImage(processedBlob);
+          setLogo(processedImg.src);
+          toast.success('Logo background removed successfully!');
+        } else {
+          const reader = new FileReader();
+          reader.onload = (e) => {
+            setLogo(e.target?.result as string);
+          };
+          reader.readAsDataURL(file);
+        }
+      } catch (error) {
+        console.error('Error processing image:', error);
+        toast.error('Failed to process the logo. Please try again.');
+      } finally {
+        setIsProcessing(false);
+      }
     }
-  }, []);
+  }, [removeLogoBackground]);
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     accept: { 'image/*': [] },
     maxFiles: 1,
+    disabled: isProcessing,
   });
 
   const downloadQR = () => {
@@ -92,15 +114,27 @@ const QRCodeGenerator = () => {
             </div>
           </div>
 
-          <div className="space-y-2">
+          <div className="space-y-4">
             <Label>Logo (optional)</Label>
+            <div className="flex items-center space-x-2">
+              <Switch
+                id="remove-bg"
+                checked={removeLogoBackground}
+                onCheckedChange={setRemoveLogoBackground}
+                disabled={isProcessing}
+              />
+              <Label htmlFor="remove-bg">Remove logo background</Label>
+            </div>
             <div
               {...getRootProps()}
               className={`border-2 border-dashed rounded-lg p-4 text-center cursor-pointer transition-colors
-                ${isDragActive ? 'border-primary bg-primary/10' : 'border-gray-300 hover:border-primary'}`}
+                ${isDragActive ? 'border-primary bg-primary/10' : 'border-gray-300 hover:border-primary'}
+                ${isProcessing ? 'opacity-50 cursor-not-allowed' : ''}`}
             >
               <input {...getInputProps()} />
-              {logo ? (
+              {isProcessing ? (
+                <p className="text-gray-500">Processing image...</p>
+              ) : logo ? (
                 <div className="flex items-center justify-center">
                   <img src={logo} alt="Logo" className="w-16 h-16 object-contain" />
                 </div>
@@ -110,7 +144,7 @@ const QRCodeGenerator = () => {
             </div>
           </div>
 
-          <Button onClick={downloadQR} className="w-full">
+          <Button onClick={downloadQR} className="w-full" disabled={isProcessing}>
             Download QR Code
           </Button>
         </div>
