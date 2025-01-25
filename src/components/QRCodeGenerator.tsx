@@ -1,5 +1,5 @@
 import React, { useState, useCallback } from 'react';
-import QRCode from 'qrcode.react';
+import { QRCodeSVG } from 'qrcode.react';
 import { useDropzone } from 'react-dropzone';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -117,7 +117,7 @@ const QRCodeGenerator = () => {
 
         <div className="glass-panel p-6 flex items-center justify-center">
           <div className="bg-white rounded-xl p-4 shadow-lg">
-            <QRCode
+            <QRCodeSVG
               value={text}
               size={size}
               fgColor={fgColor}
