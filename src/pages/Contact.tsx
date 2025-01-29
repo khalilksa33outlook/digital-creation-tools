@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
+import { Coffee, PaypalIcon } from "lucide-react";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -13,6 +14,14 @@ const Contact = () => {
       title: "Message Sent",
       description: "We'll get back to you as soon as possible!",
     });
+  };
+
+  const handlePayPalDonation = () => {
+    window.open('https://www.paypal.com/paypalme/khalilksa33', '_blank');
+  };
+
+  const handleBuyMeACoffee = () => {
+    window.open('https://www.buymeacoffee.com/khalilksa33', '_blank');
   };
 
   return (
@@ -58,6 +67,33 @@ const Contact = () => {
           <h2 className="text-xl font-semibold mb-4">Other Ways to Reach Us</h2>
           <p className="text-gray-600">Email: contact@kamysoft.com</p>
           <p className="text-gray-600">Phone: +1 (555) 123-4567</p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.6 }}
+          className="mt-12 text-center"
+        >
+          <h2 className="text-xl font-semibold mb-6">Support Our Work</h2>
+          <div className="flex justify-center gap-4">
+            <Button
+              variant="outline"
+              className="flex items-center gap-2"
+              onClick={handlePayPalDonation}
+            >
+              <PaypalIcon className="w-5 h-5" />
+              Donate with PayPal
+            </Button>
+            <Button
+              variant="outline"
+              className="flex items-center gap-2"
+              onClick={handleBuyMeACoffee}
+            >
+              <Coffee className="w-5 h-5" />
+              Buy me a coffee
+            </Button>
+          </div>
         </motion.div>
       </div>
     </div>
