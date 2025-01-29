@@ -65,8 +65,8 @@ const Contact = () => {
           className="mt-12 text-center"
         >
           <h2 className="text-xl font-semibold mb-4">Other Ways to Reach Us</h2>
-          <p className="text-gray-600">Email: contact@kamysoft.com</p>
-          <p className="text-gray-600">Phone: +1 (555) 123-4567</p>
+          <p className="text-gray-600">Email: info@kamysoft.com</p>
+          <p className="text-gray-600">Phone: +966 50 716 3166</p>
         </motion.div>
 
         <motion.div
