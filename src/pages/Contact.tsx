@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/components/ui/use-toast";
-import { Coffee, PaypalIcon } from "lucide-react";
+import { Coffee, CreditCard } from "lucide-react";
 
 const Contact = () => {
   const { toast } = useToast();
@@ -82,7 +82,7 @@ const Contact = () => {
               className="flex items-center gap-2"
               onClick={handlePayPalDonation}
             >
-              <PaypalIcon className="w-5 h-5" />
+              <CreditCard className="w-5 h-5" />
               Donate with PayPal
             </Button>
             <Button
