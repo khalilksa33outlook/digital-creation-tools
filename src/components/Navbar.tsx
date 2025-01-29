@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
+import { useAuth } from "@/contexts/AuthContext";
+import { Button } from "@/components/ui/button";
 
 const Navbar = () => {
+  const { user } = useAuth();
+
   return (
     <nav className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b">
       <div className="container mx-auto px-4">
@@ -21,6 +25,17 @@ const Navbar = () => {
             <Link to="/contact" className="text-gray-600 hover:text-primary transition-colors">
               Contact
             </Link>
+            {user ? (
+              <Link to="/profile" className="text-gray-600 hover:text-primary transition-colors">
+                Profile
+              </Link>
+            ) : (
+              <Link to="/auth">
+                <Button variant="outline" size="sm">
+                  Sign In
+                </Button>
+              </Link>
+            )}
           </div>
         </div>
       </div>
