@@ -13,25 +13,28 @@ const Navbar = () => {
               alt="KamySoft Logo" 
               className="h-8 w-8"
             />
-            <span className="text-xl font-bold text-[#61dafb]">KamySoft</span>
+            <span className="text-xl font-bold text-[#0066cc]">KamySoft</span>
           </Link>
           <div className="hidden md:flex items-center space-x-8">
-            <Link to="/tools" className="text-gray-600 hover:text-[#61dafb] transition-colors">
+            <Link to="/tools" className="text-[#0066cc] hover:text-[#004d99] transition-colors">
               QR Code
             </Link>
-            <Link to="/services" className="text-gray-600 hover:text-[#61dafb] transition-colors">
+            <Link to="/whatsapp" className="text-[#0066cc] hover:text-[#004d99] transition-colors">
+              WhatsApp Link
+            </Link>
+            <Link to="/services" className="text-[#0066cc] hover:text-[#004d99] transition-colors">
               Services
             </Link>
-            <Link to="/about" className="text-gray-600 hover:text-[#61dafb] transition-colors">
+            <Link to="/about" className="text-[#0066cc] hover:text-[#004d99] transition-colors">
               About
             </Link>
-            <Link to="/contact" className="text-gray-600 hover:text-[#61dafb] transition-colors">
+            <Link to="/contact" className="text-[#0066cc] hover:text-[#004d99] transition-colors">
               Contact
             </Link>
             <Link 
               to="https://wa.me/966507163166" 
               target="_blank" 
-              className="flex items-center space-x-2 text-[#61dafb] hover:text-[#4fa8c7] transition-colors"
+              className="flex items-center space-x-2 text-[#0066cc] hover:text-[#004d99] transition-colors"
             >
               <MessageCircle className="w-5 h-5" />
               <span>WhatsApp</span>

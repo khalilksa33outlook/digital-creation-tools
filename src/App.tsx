@@ -23,7 +23,7 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <Navbar />
-          <div className="pt-16"> {/* Added padding-top to prevent navbar overlap */}
+          <div className="pt-16">
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/tools" element={<Index />} />
