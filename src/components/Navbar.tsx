@@ -14,7 +14,7 @@ const Navbar = () => {
           </Link>
           <div className="hidden md:flex space-x-8">
             <Link to="/tools" className="text-gray-600 hover:text-primary transition-colors">
-              Tools
+              QR Code
             </Link>
             <Link to="/services" className="text-gray-600 hover:text-primary transition-colors">
               Services
@@ -25,17 +25,6 @@ const Navbar = () => {
             <Link to="/contact" className="text-gray-600 hover:text-primary transition-colors">
               Contact
             </Link>
-            {user ? (
-              <Link to="/profile" className="text-gray-600 hover:text-primary transition-colors">
-                Profile
-              </Link>
-            ) : (
-              <Link to="/auth">
-                <Button variant="outline" size="sm">
-                  Sign In
-                </Button>
-              </Link>
-            )}
           </div>
         </div>
       </div>

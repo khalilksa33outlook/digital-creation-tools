@@ -10,7 +10,6 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Services from "./pages/Services";
 import Contact from "./pages/Contact";
-import Auth from "./pages/Auth";
 import Profile from "./pages/Profile";
 import Navbar from "./components/Navbar";
 
@@ -24,16 +23,17 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/tools" element={<Index />} />
-            <Route path="/whatsapp" element={<WhatsApp />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/services" element={<Services />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/auth" element={<Auth />} />
-            <Route path="/profile" element={<Profile />} />
-          </Routes>
+          <div className="pt-16"> {/* Added padding-top to prevent navbar overlap */}
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/tools" element={<Index />} />
+              <Route path="/whatsapp" element={<WhatsApp />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/services" element={<Services />} />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/profile" element={<Profile />} />
+            </Routes>
+          </div>
         </BrowserRouter>
       </TooltipProvider>
     </AuthProvider>
