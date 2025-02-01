@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { WhatsApp } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 
 const Navbar = () => {
   return (
@@ -33,7 +33,7 @@ const Navbar = () => {
               target="_blank" 
               className="flex items-center space-x-2 text-[#61dafb] hover:text-[#4fa8c7] transition-colors"
             >
-              <WhatsApp className="w-5 h-5" />
+              <MessageCircle className="w-5 h-5" />
               <span>WhatsApp</span>
             </Link>
           </div>
