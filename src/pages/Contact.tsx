@@ -43,7 +43,7 @@ const Contact = () => {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-12"
         >
-          <h1 className="text-4xl font-bold mb-4 text-gray-800">Contact Us</h1>
+          <h1 className="text-4xl font-bold mb-4 text-[#61dafb]">Contact Us</h1>
           <p className="text-lg text-gray-600">Get in touch with our team</p>
         </motion.div>
 
@@ -86,8 +86,8 @@ const Contact = () => {
           transition={{ delay: 0.6 }}
           className="mt-12"
         >
-          <div className="bg-card rounded-lg p-6 border shadow-sm">
-            <h3 className="text-lg font-medium mb-4 text-gray-800">Please donate for needy people</h3>
+          <div className="glass-panel p-6">
+            <h3 className="text-lg font-medium mb-4 text-[#61dafb]">Please donate for needy people</h3>
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium text-gray-600 mb-2">Select Amount</label>
