@@ -10,7 +10,7 @@ const Services = () => {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-12"
         >
-          <h1 className="text-4xl font-bold mb-4 text-[#61dafb]">Our Services</h1>
+          <h1 className="text-4xl font-bold mb-4 text-[#0066cc]">Our Services</h1>
           <p className="text-lg text-gray-600">Comprehensive digital solutions for your business needs</p>
         </motion.div>
 

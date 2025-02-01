@@ -54,7 +54,7 @@ const QRCodeForm = ({
   const resetForm = () => {
     setText('https://lovable.dev');
     setSize(256);
-    setFgColor('#8B5CF6');
+    setFgColor('#0066cc');
     setBgColor('#FFFFFF');
     setLogo(null);
     setRemoveLogoBackground(false);

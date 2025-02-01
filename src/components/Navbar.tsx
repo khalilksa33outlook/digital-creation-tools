@@ -31,14 +31,6 @@ const Navbar = () => {
             <Link to="/contact" className="text-[#0066cc] hover:text-[#004d99] transition-colors">
               Contact
             </Link>
-            <Link 
-              to="https://wa.me/966507163166" 
-              target="_blank" 
-              className="flex items-center space-x-2 text-[#0066cc] hover:text-[#004d99] transition-colors"
-            >
-              <MessageCircle className="w-5 h-5" />
-              <span>WhatsApp</span>
-            </Link>
           </div>
         </div>
       </div>
