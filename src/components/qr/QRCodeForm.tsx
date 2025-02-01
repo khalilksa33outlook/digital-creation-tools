@@ -5,7 +5,6 @@ import { Button } from '@/components/ui/button';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import LogoUploader from './LogoUploader';
 import { toast } from 'sonner';
-import { Link } from 'react-router-dom';
 
 interface QRCodeFormProps {
   text: string;
@@ -158,14 +157,6 @@ const QRCodeForm = ({
         <Button onClick={resetForm} variant="outline" className="flex-1" disabled={isProcessing}>
           Reset
         </Button>
-      </div>
-
-      <div className="pt-4 border-t">
-        <Link to="/whatsapp">
-          <Button variant="secondary" className="w-full">
-            Create WhatsApp Link
-          </Button>
-        </Link>
       </div>
     </div>
   );
